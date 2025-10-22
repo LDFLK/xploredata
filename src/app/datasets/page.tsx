@@ -16,9 +16,9 @@ export default function Home() {
       <div className="flex h-screen bg-background text-foreground overflow-hidden">
         <Sidebar onSelectDataset={setSelectedDataset} />
         <div className="flex-1 flex flex-col overflow-hidden w-full">
-          <div className="p-4 border-sidebar-border flex justify-end">
+          {/* <div className="p-4 border-sidebar-border flex justify-end">
             <ThemeToggle isDark={isDark} onToggle={setIsDark}/>
-          </div>
+          </div> */}
           <div className="flex-1 overflow-auto">
             {selectedDataset ? (
               <DatasetView data={selectedDataset} />

@@ -131,23 +131,26 @@ const DataTimeline = ({ activeYear, setActiveYear }) => {
             return (
               <div
                 key={year}
-                className={`flex flex-col items-center transition-all duration-500 select-none ${isActive ? "scale-70" : "scale-60"
-                  }`}
+                className={`flex flex-col items-center transition-all duration-500 select-none ${
+                  isActive ? "scale-70" : "scale-60"
+                }`}
                 onClick={() => setActiveYear(year)}
               >
                 <div
-                  className={`w-6 h-6 rounded-full mb-2 ${isPast
+                  className={`w-6 h-6 rounded-full mb-2 ${
+                    isPast
                       ? "bg-gradient-to-r from-cyan-400 to-blue-500 shadow-lg"
                       : "bg-slate-600"
-                    }`}
+                  }`}
                 />
                 <div
-                  className={`text-sm ${isActive
+                  className={`text-sm ${
+                    isActive
                       ? "text-white font-bold"
                       : isPast
-                        ? "text-white/80"
-                        : "text-slate-400"
-                    }`}
+                      ? "text-white/80"
+                      : "text-slate-400"
+                  }`}
                 >
                   {year}
                 </div>
@@ -413,6 +416,13 @@ export default function XploreDataHomepage() {
   const [activeYear, setActiveYear] = useState(2023);
   const router = useRouter();
 
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    setClicked(true);       // disable the button
+    router.push("/datasets"); // navigate
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-x-hidden relative">
       {/* Enhanced background with gradients and tiny floating points */}
@@ -486,9 +496,23 @@ export default function XploreDataHomepage() {
               Visualize Data Through Time — explore trends, compare sectors, and
               dive deep into the numbers.
             </p>
-            <button
+            {/* <button
               className="mt-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white px-4 py-3 rounded-xl font-semibold text-lg hover:scale-105 transition transform inline-flex items-center space-x-3 hover:cursor-pointer"
               onClick={() => router.push("/datasets")}
+            >
+              <Zap className="w-6 h-6" />
+              <span>View data</span>
+              <ChevronRight className="w-6 h-6" />
+            </button> */}
+            <button
+              className={`mt-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white px-4 py-3 rounded-xl font-semibold text-lg inline-flex items-center space-x-3 transition transform 
+        ${
+          clicked
+            ? "opacity-50 cursor-not-allowed"
+            : "hover:scale-105 hover:cursor-pointer"
+        }`}
+              onClick={handleClick}
+              disabled={clicked} // disables native button behavior
             >
               <Zap className="w-6 h-6" />
               <span>View data</span>
@@ -594,8 +618,8 @@ export default function XploreDataHomepage() {
               Start Exploring Today
             </h3>
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              Dive deep into Sri Lanka&apos;s data landscape and discover insights
-              that matter.
+              Dive deep into Sri Lanka&apos;s data landscape and discover
+              insights that matter.
             </p>
             <button
               onClick={() => router.push("/datasets")}

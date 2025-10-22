@@ -11,7 +11,6 @@ import Link from "next/link";
 
 export function Sidebar({ onSelectDataset }: SidebarProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
     new Set()
@@ -122,6 +121,7 @@ export function Sidebar({ onSelectDataset }: SidebarProps) {
   // Restore state from URL on mount
   useEffect(() => {
     const restoreFromUrl = async () => {
+      const searchParams = new URLSearchParams();
       const datasetId = searchParams.get("datasetId");
       const datasetParentId = searchParams.get("parentId");
 
@@ -188,6 +188,7 @@ export function Sidebar({ onSelectDataset }: SidebarProps) {
   const renderCategories = (parentId: string = "", level: number = 0) => {
     const categories = categoriesByParentId.get(parentId) || [];
     const datasets = datasetsByParentId.get(parentId) || [];
+    const searchParams = new URLSearchParams();
 
     const currentDatasetId = searchParams.get("datasetId");
 
