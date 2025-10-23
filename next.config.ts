@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // reactStrictMode: true,
   output: "export",
+  distDir: 'dist',
   /* config options here */
   eslint: {
     // Ignore ESLint errors during production builds
