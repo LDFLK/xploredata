@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "standalone",
+  output: "export",
   /* config options here */
   eslint: {
     // Ignore ESLint errors during production builds
