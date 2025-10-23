@@ -45,7 +45,17 @@ export function Sidebar({ onSelectDataset }: SidebarProps) {
 
       setCategoriesByParentId((prev) => {
         const newMap = new Map(prev);
-        newMap.set(parentId, categories);
+
+        const filteredCategories = categories.filter((cat) => {
+          const date = cat.created;
+          if (!date) return false; 
+
+          const year = date.split("-")[0]; 
+
+          return year === "2022"; 
+        });
+
+        newMap.set(parentId, filteredCategories);
         return newMap;
       });
 
@@ -211,7 +221,10 @@ export function Sidebar({ onSelectDataset }: SidebarProps) {
                   }`}
                 />
                 <span className="text-sm font-medium">
-                  { formatText({ name: category.name }, { removeYear: level === 1 })}
+                  {formatText(
+                    { name: category.name },
+                    { removeYear: level === 1 }
+                  )}
                 </span>
 
                 {isLoading && (
