@@ -4,7 +4,7 @@
 
 //example
 // window.configs = {
-//     apiUrl : null ,
+//     apiUrl : 'put deployed gi service url here' ,
 //     version : "rc-0.1.0",
 //     apiUrlService : "http://127.0.0.1:8000"
 // };

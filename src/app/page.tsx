@@ -74,6 +74,16 @@ const visitorsData = [
    - receives activeYear and setActiveYear
    =========================== */
 
+// const apiUrl = window?.configs?.apiUrl ? window?.configs?.apiUrl : "/";
+
+// console.log(apiUrl)
+
+// const apiUrl = window?.configs?.apiUrl;
+// console.log(apiUrl ?? "/");
+
+
+
+
 const DataTimeline = ({ activeYear, setActiveYear }) => {
   useEffect(() => {
     const years = [2019, 2020, 2021, 2022, 2023];
@@ -419,8 +429,8 @@ export default function XploreDataHomepage() {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
-    setClicked(true);       // disable the button
-    router.push("/datasets"); // navigate
+    setClicked(true);    
+    router.push("/datasets");
   };
 
   return (

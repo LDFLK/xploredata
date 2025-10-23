@@ -18,7 +18,7 @@ export function DatasetView({ data }: DatasetViewProps) {
       try {
         setLoadingDatasetId(dataset.id);
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/data/attribute/${dataset.parentId}`,
+          `/data/attribute/${dataset.parentId}`,
 
           {
             nameCode: dataset.name,

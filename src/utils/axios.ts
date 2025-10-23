@@ -1,15 +1,10 @@
-// utils/api.ts
-import axios from "axios";
+"use client";
 
-let apiInstance = axios.create({
-  baseURL: "//localhost:8000", // default fallback
+import axios from "axios";
+import {getApiBaseUrl} from './runtimeconfig'
+
+const api = axios.create({
+  baseURL: getApiBaseUrl(),
 });
 
-// Function to initialize with runtime API URL
-export const initApi = (runtimeUrl?: string) => {
-  const baseURL = runtimeUrl || "//localhost:8000";
-  apiInstance = axios.create({ baseURL });
-};
-
-// Getter for Axios instance
-export const api = () => apiInstance;
+export default api;
