@@ -5,6 +5,7 @@ import { DataTable } from "./data-table";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
+import api from "@/utils/axios";
 
 export function DatasetView({ data }: DatasetViewProps) {
   const dataset = data;
@@ -17,7 +18,7 @@ export function DatasetView({ data }: DatasetViewProps) {
     const fetchData = async () => {
       try {
         setLoadingDatasetId(dataset.id);
-        const response = await axios.post(
+        const response = await api.post(
           `/data/attribute/${dataset.parentId}`,
 
           {
