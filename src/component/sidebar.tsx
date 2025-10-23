@@ -8,6 +8,7 @@ import axios from "axios";
 import formatText from "@/utils/common_functions";
 import { ClipLoader } from "react-spinners";
 import Link from "next/link";
+import api from "@/utils/axios";
 
 export function Sidebar({ onSelectDataset }: SidebarProps) {
   const router = useRouter();
@@ -34,10 +35,10 @@ export function Sidebar({ onSelectDataset }: SidebarProps) {
     try {
       const url =
         parentId === ""
-          ? `${process.env.NEXT_PUBLIC_API_URL}/categories`
-          : `${process.env.NEXT_PUBLIC_API_URL}/categories?id=${parentId}`;
+          ? `/categories`
+          : `/categories?id=${parentId}`;
 
-      const response = await axios.get<YearBasedData>(url, {
+      const response = await api.get<YearBasedData>(url, {
         headers: { "Content-Type": "application/json" },
       });
 

@@ -4,11 +4,10 @@ import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 
-// Load the Poppins font with desired configuration
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // Optional: customize as needed
+  weight: ["400", "500", "600", "700"], 
   display: "swap",
 });
 
@@ -24,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={poppins.variable}>
+      <head>
+        <script src="/config.js" />
+      </head>
       <body className="antialiased">
         <Theme>{children}</Theme>
       </body>
